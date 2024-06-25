@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:background="@drawable/button1"
+    android:gravity="center">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_marginBottom="24dp">
+
+        <TextView
+            android:id="@+id/tv_calorie_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="500"
+            android:textSize="48sp"
+            android:textColor="@android:color/white" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="kcal"
+            android:textSize="24sp"
+            android:textColor="@android:color/white"
+            android:layout_marginTop="8dp"/>
+
+
+    <EditText
+        android:id="@+id/newKcalRecord"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="kcal"
+        android:inputType="number"
+        android:background="@android:color/white"
+        android:padding="8dp"
+        android:layout_marginBottom="16dp"/>
+
+
+
+        <Button
+        android:id="@+id/btnKcal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:text="Enter"
+        android:textColor="@android:color/white" />
+
+    <Button
+        android:id="@+id/btnShowKcalRecord"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="History"
+        android:textColor="@android:color/white"
+        android:padding="8dp"/>
+
+
+
+    </LinearLayout>
+</LinearLayout>
