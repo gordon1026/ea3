@@ -1,6 +1,8 @@
 package com.example.ea3;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -27,7 +29,8 @@ public class Kcal extends AppCompatActivity {
 
     private EditText newKcalRecord;
     private Button btnKcal, btnShowKcalRecord;
-    private static String url = "http://10.0.2.2/myphp/addKcalRecord.php";
+    private int userId;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,14 +40,20 @@ public class Kcal extends AppCompatActivity {
         btnKcal = findViewById(R.id.btnKcal);
         btnShowKcalRecord = findViewById(R.id.btnShowKcalRecord);
 
+        // Retrieve userId from SharedPreferences
+        SharedPreferences sharedPreferences = getSharedPreferences("UserPref", Context.MODE_PRIVATE);
+        userId = sharedPreferences.getInt("userId", -1); // Default value is -1 if userId is not found
+
+        if (userId == -1) {
+            Toast.makeText(this, "User ID not found. Please sign in again.", Toast.LENGTH_LONG).show();
+            finish();
+            return;
+        }
+
         btnKcal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String kcalValue = newKcalRecord.getText().toString().trim();
-
-
-                new MyAsyncTask().execute(url);
-
+                new MyAsyncTask().execute("http://10.0.2.2:8080/1/addKcalRecord.php");
             }
         });
 
@@ -57,54 +66,37 @@ public class Kcal extends AppCompatActivity {
         });
     }
 
-    public String executeHttpPost (String url){
+    public String executeHttpPost(String url) {
         String result = "";
-
-        //HttpClient acts like a Browser (without the UI)
         HttpClient client = new DefaultHttpClient();
-
-        // Create object to represent a POST request
         HttpPost request = new HttpPost(url);
 
-        List<NameValuePair> nameValuePairs =
-                new ArrayList<NameValuePair>(2);
-
-        // $_POST[] values to PHP
-        nameValuePairs.add(new BasicNameValuePair
-                ("newKcalRecord",newKcalRecord.getText().toString()));
-
-        // This will store the response from the server
+        List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(2);
+        nameValuePairs.add(new BasicNameValuePair("userId", String.valueOf(userId)));
+        nameValuePairs.add(new BasicNameValuePair("newKcalRecord", newKcalRecord.getText().toString()));
         HttpResponse response;
-
         try {
             request.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+            Log.v("myLog", "Sending request to: " + url + " with userId: " + userId + " and data: " + newKcalRecord.getText().toString());
 
-            //Actually call the server
+            // Actually call the server
             response = client.execute(request);
 
-            //Extract text message from server
+            // Extract text message from server
             result = EntityUtils.toString(response.getEntity());
+            Log.v("myLog", "Response from server: " + result);
         } catch (Exception e) {
-
             result = "[ERROR] " + e.toString();
-
             Log.v("myLog", "result: " + result);
         }
         return result;
     }
 
-
-
-
-
-
-
     private class MyAsyncTask extends AsyncTask<String, Void, String> {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            Toast.makeText(getApplicationContext(),
-                    "Connecting to server...", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "Connecting to server...", Toast.LENGTH_LONG).show();
         }
 
         @Override
@@ -115,7 +107,7 @@ public class Kcal extends AppCompatActivity {
         @Override
         protected void onPostExecute(String result) {
             super.onPostExecute(result);
+            Toast.makeText(getApplicationContext(), result, Toast.LENGTH_LONG).show();
         }
     }
-
 }

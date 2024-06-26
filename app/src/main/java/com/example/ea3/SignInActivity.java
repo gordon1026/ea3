@@ -15,7 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class SignInActivity extends AppCompatActivity {
 
-    private EditText etEmail, etPassword;
+    private EditText etUsername, etPassword;
     private Button btnSignIn;
     private DBHelper dbHelper;
     private TextView tvSignUp;
@@ -25,7 +25,7 @@ public class SignInActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
 
-        etEmail = findViewById(R.id.etEmail);
+        etUsername = findViewById(R.id.etUsername);
         etPassword = findViewById(R.id.etPassword);
         btnSignIn = findViewById(R.id.btnSignIn);
         tvSignUp = findViewById(R.id.tvSignUp);
@@ -42,28 +42,23 @@ public class SignInActivity extends AppCompatActivity {
         btnSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String email = etEmail.getText().toString().trim();
+                String username = etUsername.getText().toString().trim();
                 String password = etPassword.getText().toString().trim();
 
-                if (email.isEmpty() || password.isEmpty()) {
-                    Toast.makeText(SignInActivity.this, "Email and Password are required", Toast.LENGTH_SHORT).show();
+                if (username.isEmpty() || password.isEmpty()) {
+                    Toast.makeText(SignInActivity.this, "Username and Password are required", Toast.LENGTH_SHORT).show();
                 } else {
-                    if (dbHelper.checkUser(email, password)) {
-                        Cursor cursor = dbHelper.getUser(email);
+                    if (dbHelper.checkUser(username, password)) {
+                        Cursor cursor = dbHelper.getUser(username);
                         if (cursor.moveToFirst()) {
                             int userId = cursor.getInt(cursor.getColumnIndex("id"));
-                            String username = cursor.getString(cursor.getColumnIndex("username"));
+                            String fetchedUsername = cursor.getString(cursor.getColumnIndex("username"));
 
                             // Save user data in SharedPreferences
                             SharedPreferences sharedPreferences = getSharedPreferences("UserPref", Context.MODE_PRIVATE);
                             SharedPreferences.Editor editor = sharedPreferences.edit();
                             editor.putInt("userId", userId);
-                            editor.putString("username", username);
-                            editor.putString("email", email);
-
-                            // Optionally, you can also save the profile image URI if available
-                            // String profileImageUri = ...; // Get the URI from your database or other source
-                            // editor.putString("profile_image_uri", profileImageUri);
+                            editor.putString("username", fetchedUsername);
 
                             editor.apply();
 

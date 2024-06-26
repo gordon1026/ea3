@@ -43,10 +43,10 @@
         android:padding="32dp">
 
         <EditText
-            android:id="@+id/etEmail"
+            android:id="@+id/etUsername"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Email/Phone number"
+            android:hint="Username"
             android:background="@drawable/edit_text_background"
             android:padding="16dp"
             android:layout_marginBottom="16dp" />
@@ -57,6 +57,7 @@
             android:layout_height="wrap_content"
             android:hint="Password"
             android:background="@drawable/edit_text_background"
+            android:inputType="textPassword"
             android:padding="16dp"
             android:layout_marginBottom="32dp" />
 

@@ -23,7 +23,7 @@
             android:name=".CheckActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".MapActivity"
             android:exported="true" />
         <activity
             android:name=".SettingsActivity"
@@ -46,13 +46,13 @@
 
         <activity android:name=".Countdown"
             android:exported="false"/>
-<activity android:name=".Map"
-    android:exported="true"/>
+        <activity android:name=".Map"
+            android:exported="true"/>
 
         <activity android:name=".ShowWeather"
             android:exported="true"/>
         <activity
-            android:name=".MapActivity"
+            android:name=".MainActivity"
             android:exported="true">
 
             <intent-filter>

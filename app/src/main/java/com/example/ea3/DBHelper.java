@@ -13,7 +13,6 @@ public class DBHelper extends SQLiteOpenHelper {
     private static final String TABLE_NAME = "users";
     private static final String COLUMN_ID = "id";
     private static final String COLUMN_USERNAME = "username";
-    private static final String COLUMN_EMAIL = "email";
     private static final String COLUMN_PASSWORD = "password";
 
     public DBHelper(Context context) {
@@ -25,7 +24,6 @@ public class DBHelper extends SQLiteOpenHelper {
         String CREATE_TABLE = "CREATE TABLE " + TABLE_NAME + "("
                 + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
                 + COLUMN_USERNAME + " TEXT,"
-                + COLUMN_EMAIL + " TEXT,"
                 + COLUMN_PASSWORD + " TEXT" + ")";
         db.execSQL(CREATE_TABLE);
     }
@@ -36,22 +34,21 @@ public class DBHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public boolean addUser(String username, String email, String password) {
+    public boolean addUser(String username, String password) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(COLUMN_USERNAME, username);
-        values.put(COLUMN_EMAIL, email);
         values.put(COLUMN_PASSWORD, password);
         long result = db.insert(TABLE_NAME, null, values);
         db.close();
         return result != -1;
     }
 
-    public boolean checkUser(String email, String password) {
+    public boolean checkUser(String username, String password) {
         SQLiteDatabase db = this.getReadableDatabase();
         String[] columns = {COLUMN_ID};
-        String selection = COLUMN_EMAIL + "=? AND " + COLUMN_PASSWORD + "=?";
-        String[] selectionArgs = {email, password};
+        String selection = COLUMN_USERNAME + "=? AND " + COLUMN_PASSWORD + "=?";
+        String[] selectionArgs = {username, password};
         Cursor cursor = db.query(TABLE_NAME, columns, selection, selectionArgs, null, null, null);
         int count = cursor.getCount();
         cursor.close();
@@ -59,11 +56,11 @@ public class DBHelper extends SQLiteOpenHelper {
         return count > 0;
     }
 
-    public Cursor getUser(String email) {
+    public Cursor getUser(String username) {
         SQLiteDatabase db = this.getReadableDatabase();
-        String[] columns = {COLUMN_ID, COLUMN_USERNAME, COLUMN_EMAIL};
-        String selection = COLUMN_EMAIL + "=?";
-        String[] selectionArgs = {email};
+        String[] columns = {COLUMN_ID, COLUMN_USERNAME};
+        String selection = COLUMN_USERNAME + "=?";
+        String[] selectionArgs = {username};
         return db.query(TABLE_NAME, columns, selection, selectionArgs, null, null, null);
     }
 }
