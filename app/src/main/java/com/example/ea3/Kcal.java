@@ -22,8 +22,11 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 public class Kcal extends AppCompatActivity {
 
@@ -71,13 +74,18 @@ public class Kcal extends AppCompatActivity {
         HttpClient client = new DefaultHttpClient();
         HttpPost request = new HttpPost(url);
 
-        List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(2);
+        // Get the current date
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+        String currentDate = sdf.format(new Date());
+
+        List<NameValuePair> nameValuePairs = new ArrayList<>();
         nameValuePairs.add(new BasicNameValuePair("userId", String.valueOf(userId)));
         nameValuePairs.add(new BasicNameValuePair("newKcalRecord", newKcalRecord.getText().toString()));
+        nameValuePairs.add(new BasicNameValuePair("date", currentDate));
         HttpResponse response;
         try {
             request.setEntity(new UrlEncodedFormEntity(nameValuePairs));
-            Log.v("myLog", "Sending request to: " + url + " with userId: " + userId + " and data: " + newKcalRecord.getText().toString());
+            Log.v("myLog", "Sending request to: " + url + " with userId: " + userId + ", data: " + newKcalRecord.getText().toString() + ", date: " + currentDate);
 
             // Actually call the server
             response = client.execute(request);
