@@ -68,7 +68,7 @@
                     <ImageView
                         android:layout_width="150dp"
                         android:layout_height="150dp"
-                        android:background="@drawable/unhealthy1"
+                        android:background="@drawable/image1"
                         android:id="@+id/img1"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintEnd_toStartOf="@id/img2"
@@ -77,7 +77,7 @@
                     <ImageView
                         android:layout_width="150dp"
                         android:layout_height="150dp"
-                        android:background="@drawable/unhealthy2"
+                        android:background="@drawable/image1"
                         android:id="@+id/img2"
                         app:layout_constraintBottom_toTopOf="@id/img4"
                         app:layout_constraintStart_toEndOf="@id/img1"
@@ -86,7 +86,7 @@
                     <ImageView
                         android:layout_width="150dp"
                         android:layout_height="150dp"
-                        android:background="@drawable/healthy3"
+                        android:background="@drawable/image1"
                         android:id="@+id/img3"
                         android:layout_marginTop="20dp"
                         app:layout_constraintBottom_toTopOf="@id/img5"
@@ -96,7 +96,7 @@
                     <ImageView
                         android:layout_width="150dp"
                         android:layout_height="150dp"
-                        android:background="@drawable/healthy1"
+                        android:background="@drawable/image1"
                         android:id="@+id/img4"
                         android:layout_marginTop="20dp"
                         app:layout_constraintBottom_toTopOf="@id/img6"
@@ -106,7 +106,7 @@
                     <ImageView
                         android:layout_width="150dp"
                         android:layout_height="150dp"
-                        android:background="@drawable/healthy2"
+                        android:background="@drawable/image1"
                         android:id="@+id/img5"
                         android:layout_marginTop="20dp"
                         app:layout_constraintBottom_toTopOf="@id/img7"
@@ -116,7 +116,7 @@
                     <ImageView
                         android:layout_width="150dp"
                         android:layout_height="150dp"
-                        android:background="@drawable/unhealthy4"
+                        android:background="@drawable/image1"
                         android:id="@+id/img6"
                         android:layout_marginTop="20dp"
                         app:layout_constraintBottom_toTopOf="@id/img8"
@@ -126,7 +126,7 @@
                     <ImageView
                         android:layout_width="150dp"
                         android:layout_height="150dp"
-                        android:background="@drawable/healthy4"
+                        android:background="@drawable/image1"
                         android:id="@+id/img7"
                         android:layout_marginTop="20dp"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -136,7 +136,7 @@
                     <ImageView
                         android:layout_width="150dp"
                         android:layout_height="150dp"
-                        android:background="@drawable/unhealthy3"
+                        android:background="@drawable/image1"
                         android:id="@+id/img8"
                         android:layout_marginTop="20dp"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -166,6 +166,8 @@
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:background="#FCD282"
+        app:headerLayout="@layout/nav_header"
         app:itemTextAppearance="@style/ShapeAppearanceOverlay.Material3.NavigationView.Item"
-        app:menu="@menu/nav_menu" />
+        app:menu="@menu/nav_menu">
+    </com.google.android.material.navigation.NavigationView>
 </androidx.drawerlayout.widget.DrawerLayout>
