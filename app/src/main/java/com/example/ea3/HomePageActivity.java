@@ -24,7 +24,7 @@ public class HomePageActivity extends AppCompatActivity {
     private NavigationView navigationView;
     private ImageButton btnMenu, btnProfile;
     private ViewPager viewPager;
-    private ImageView midImageView;
+    private ImageView img1, img2, img3, img4, img5, img6, img7, img8;
     private Handler handler = new Handler();
     private Runnable runnable;
     private int currentPage = 0;
@@ -39,7 +39,16 @@ public class HomePageActivity extends AppCompatActivity {
         btnMenu = findViewById(R.id.btnMenu);
         btnProfile = findViewById(R.id.btnProfile);
         viewPager = findViewById(R.id.viewPager);
-        midImageView = findViewById(R.id.img1);
+
+        img1 = findViewById(R.id.img1);
+        img2 = findViewById(R.id.img2);
+        img3 = findViewById(R.id.img3);
+        img4 = findViewById(R.id.img4);
+        img5 = findViewById(R.id.img5);
+        img6 = findViewById(R.id.img6);
+        img7 = findViewById(R.id.img7);
+        img8 = findViewById(R.id.img8);
+
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
         // Set up ViewPager
         PagerAdapter adapter = new ImagePagerAdapter(this);
@@ -110,14 +119,75 @@ public class HomePageActivity extends AppCompatActivity {
             }
         });
 
-        // Set up middle ImageView click listener
-        midImageView.setOnClickListener(new View.OnClickListener() {
+
+        img1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.example.com"));
-                startActivity(browserIntent);
+                openWebsite("https://heho.com.tw/archives/209441");
             }
         });
+
+        img2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openWebsite("https://health.tvbs.com.tw/regimen/333428");
+            }
+        });
+
+        img3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openWebsite("https://www.leaderkid.com.tw/2021/04/01/101010/");
+            }
+        });
+
+        img4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openWebsite("https://www.cuhkmc.hk/tc/health-corner/healthy-living/walking-tips/SMRC_Walking_Tips_2");
+            }
+        });
+        img4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openWebsite("https://www.cuhkmc.hk/tc/health-corner/healthy-living/walking-tips/SMRC_Walking_Tips_2");
+            }
+        });
+        img5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openWebsite("https://topick.hket.com/article/3758675/");
+            }
+        });
+        img6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openWebsite("https://n.yam.com/Article/20201116368124");
+            }
+        });
+        img7.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openWebsite("https://sport.heho.com.tw/archives/86442");
+            }
+        });
+        img8.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openWebsite("https://www.careonline.com.tw/2021/01/sedentary.html");
+            }
+        });
+    }
+
+
+
+
+
+
+
+    private void openWebsite(String url) {
+        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+        startActivity(browserIntent);
     }
 
     @Override
