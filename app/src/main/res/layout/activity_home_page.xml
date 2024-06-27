@@ -166,6 +166,8 @@
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:background="#FCD282"
+        app:headerLayout="@layout/nav_header"
         app:itemTextAppearance="@style/ShapeAppearanceOverlay.Material3.NavigationView.Item"
-        app:menu="@menu/nav_menu" />
+        app:menu="@menu/nav_menu">
+    </com.google.android.material.navigation.NavigationView>
 </androidx.drawerlayout.widget.DrawerLayout>
