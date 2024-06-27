@@ -63,4 +63,14 @@ public class DBHelper extends SQLiteOpenHelper {
         String[] selectionArgs = {username};
         return db.query(TABLE_NAME, columns, selection, selectionArgs, null, null, null);
     }
+
+    // 新增一个方法用于更新用户密码
+    public boolean updatePassword(String username, String newPassword) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_PASSWORD, newPassword);
+        int rows = db.update(TABLE_NAME, values, COLUMN_USERNAME + "=?", new String[]{username});
+        db.close();
+        return rows > 0;
+    }
 }

@@ -76,16 +76,16 @@ public class Kcal extends AppCompatActivity {
 
         // Get the current date
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
-        String currentDate = sdf.format(new Date());
+        String currentDateTime = sdf.format(new Date());
 
         List<NameValuePair> nameValuePairs = new ArrayList<>();
         nameValuePairs.add(new BasicNameValuePair("userId", String.valueOf(userId)));
         nameValuePairs.add(new BasicNameValuePair("newKcalRecord", newKcalRecord.getText().toString()));
-        nameValuePairs.add(new BasicNameValuePair("date", currentDate));
+        nameValuePairs.add(new BasicNameValuePair("date", currentDateTime));
         HttpResponse response;
         try {
             request.setEntity(new UrlEncodedFormEntity(nameValuePairs));
-            Log.v("myLog", "Sending request to: " + url + " with userId: " + userId + ", data: " + newKcalRecord.getText().toString() + ", date: " + currentDate);
+            Log.v("myLog", "Sending request to: " + url + " with userId: " + userId + ", data: " + newKcalRecord.getText().toString() + ", date: " + currentDateTime);
 
             // Actually call the server
             response = client.execute(request);

@@ -18,7 +18,7 @@ public class SignInActivity extends AppCompatActivity {
     private EditText etUsername, etPassword;
     private Button btnSignIn;
     private DBHelper dbHelper;
-    private TextView tvSignUp;
+    private TextView tvSignUp,tvChange;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,12 +29,20 @@ public class SignInActivity extends AppCompatActivity {
         etPassword = findViewById(R.id.etPassword);
         btnSignIn = findViewById(R.id.btnSignIn);
         tvSignUp = findViewById(R.id.tvSignUp);
+        tvChange = findViewById(R.id.tvChange);
         dbHelper = new DBHelper(this);
 
         tvSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(SignInActivity.this, SignUpActivity.class);
+                startActivity(intent);
+            }
+        });
+        tvChange.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(SignInActivity.this, ChangePasswordActivity.class);
                 startActivity(intent);
             }
         });

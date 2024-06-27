@@ -49,7 +49,7 @@ public class SettingsActivity extends AppCompatActivity {
         sharedPreferences = getSharedPreferences("UserPref", Context.MODE_PRIVATE);
 
         // Retrieve the username and profile image path from SharedPreferences
-        String user = sharedPreferences.getString("userId", "Default User");
+        String user = sharedPreferences.getString("username", "Default User");
         profileImagePath = sharedPreferences.getString("profile_image_path", null);
 
         username.setText(user);
