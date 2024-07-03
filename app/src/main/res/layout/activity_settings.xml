@@ -31,7 +31,7 @@
             android:id="@+id/username"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Username"
+            android:text="@string/Username"
             android:textColor="#FFFFFF"
             android:textSize="18sp"
             android:layout_marginTop="10dp" />
@@ -63,7 +63,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Language"
+                android:text="@string/Language"
                 android:textSize="16sp" />
 
             <ImageView
@@ -91,7 +91,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="About"
+                android:text="@string/About"
                 android:textSize="16sp" />
 
             <ImageView
@@ -119,7 +119,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Contact Us"
+                android:text="@string/ContactUs"
                 android:textSize="16sp" />
 
             <ImageView
@@ -140,7 +140,7 @@
         android:id="@+id/logout"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:text="Logout"
+        android:text="@string/Logout"
         android:textSize="30sp"
         android:textColor="#FF0000"
         android:gravity="center"

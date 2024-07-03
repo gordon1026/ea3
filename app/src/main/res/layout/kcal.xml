@@ -22,13 +22,6 @@
             android:textSize="48sp"
             android:textColor="@android:color/white" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="kcal"
-            android:textSize="24sp"
-            android:textColor="@android:color/white"
-            android:layout_marginTop="8dp"/>
 
 
     <EditText
@@ -48,14 +41,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="8dp"
-        android:text="Enter"
+        android:text="@string/Enter"
         android:textColor="@android:color/white" />
 
     <Button
         android:id="@+id/btnShowKcalRecord"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="History"
+        android:text="@string/History"
         android:textColor="@android:color/white"
         android:padding="8dp"/>
 

@@ -25,7 +25,7 @@
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_below="@id/profile_image"
-            android:text="Username"
+            android:text="@string/Username"
             android:gravity="center"/>
     </RelativeLayout>
 

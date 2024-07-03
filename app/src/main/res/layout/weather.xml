@@ -54,13 +54,7 @@
 
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/tvTime"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="PM11:27"
-            android:textColor="@color/white"
-            android:textSize="14sp" />
+
     </LinearLayout>
 
     <!-- Weather Details Section -->
@@ -74,7 +68,7 @@
 
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="今日天氣"
+            android:text="@string/TodayWeather"
             android:textColor="#234564"
             android:textSize="16sp"
             android:textStyle="bold" />
@@ -99,7 +93,7 @@
 
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="展望未來"
+            android:text="@string/TomorrowWeather"
             android:textSize="16sp"
             android:textColor="#234564"
             android:textStyle="bold" />
@@ -124,7 +118,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
-            android:text="每日預報"
+            android:text="@string/ThisWeek"
             android:textColor="#234564"
             android:textSize="16sp"
             android:textStyle="bold" />

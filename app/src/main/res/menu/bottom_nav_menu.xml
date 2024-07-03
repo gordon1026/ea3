@@ -3,14 +3,14 @@
     <item
         android:id="@+id/action_home"
         android:icon="@drawable/ic_home"
-        android:title="Home" />
+        android:title="@string/Home" />
     <item
         android:id="@+id/action_map"
         android:icon="@drawable/ic_map2"
-        android:title="Map" />
+        android:title="@string/Map" />
 
     <item
         android:id="@+id/action_take_photo"
         android:icon="@drawable/ic_camera"
-        android:title="Take Photo" />
+        android:title="@string/PostureCheck" />
 </menu>

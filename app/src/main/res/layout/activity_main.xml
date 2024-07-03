@@ -24,7 +24,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:text="Welcome To GTS"
+            android:text="@string/WelcomeToGTS"
             android:textSize="25dp"
             android:textColor="#ffffff"/>
 
@@ -43,7 +43,7 @@
             android:layout_marginTop="50dp"
             android:background="@drawable/button1"
             android:padding="16dp"
-            android:text="Login"
+            android:text="@string/Login"
             android:textColor="#FFFFFF"
             app:backgroundTint="@null"
             app:layout_constraintTop_toTopOf="parent" />
@@ -53,7 +53,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="16dp"
-            android:text="Create Account"
+            android:text="@string/CreateAccount"
             android:textColor="#FFFFFF"
             app:backgroundTint="@null"
             android:background="@drawable/button1"

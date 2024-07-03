@@ -54,7 +54,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="left"
-                android:text="Height:"
+                android:text="@string/Height"
                 android:textSize="20sp" />
 
             <EditText
@@ -66,12 +66,7 @@
                 android:background="@drawable/edit_text_background"
                 android:padding="16dp" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="right"
-                android:text="cm"
-                android:textSize="20sp" />
+
         </LinearLayout>
         <!--  Weight input field  -->
         <LinearLayout
@@ -85,7 +80,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="left"
-                android:text="Weight:"
+                android:text="@string/Weight"
                 android:textSize="20sp" />
 
             <EditText
@@ -97,12 +92,7 @@
                 android:background="@drawable/edit_text_background"
                 android:padding="16dp" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="right"
-                android:text="kg"
-                android:textSize="20sp" />
+
         </LinearLayout>
         <!--  Enter button  -->
         <Button
@@ -110,6 +100,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="Enter" />
+            android:text="@string/Enter" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
