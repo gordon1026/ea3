@@ -40,4 +40,11 @@
     <string name="TodayWeather">Today Weather</string>
     <string name="TomorrowWeather">Tomorrow Weather</string>
     <string name="ThisWeek">This Week</string>
+    <string name="Weather">Weather</string>
+    <string name="Game">Game</string>
+    <string name="KcalCalculator">Calories Calculator</string>
+    <string name="BMICalculator">BMI Calculator</string>
+    <string name="BMRCalculator">BMR Calculator</string>
+    <string name="Timer">Timer</string>
+    <string name="Setting">Setting</string>
 </resources>

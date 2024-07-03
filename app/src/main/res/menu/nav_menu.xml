@@ -2,30 +2,40 @@
     <item
         android:id="@+id/nav_home"
         android:icon="@drawable/ic_home"
-        android:title="Home" />
-    <item
-        android:id="@+id/nav_map"
-        android:icon="@drawable/ic_map2"
-        android:title="Map" />
-    <item
-        android:id="@+id/kcal"
+        android:title="@string/Home" />
 
-        android:title="Kcal" />
     <item
-        android:id="@+id/nav_AICheck"
-        android:icon="@drawable/ic_camera"
-        android:title="AI Checking" />
+        android:id="@+id/nav_Weather"
+        android:icon="@drawable/weather"
+        android:title="@string/Weather" />
+    <item
+        android:id="@+id/nav_Game"
+        android:icon="@drawable/game"
+        android:title="@string/Game" />
+
+    <item
+        android:id="@+id/nav_kcal"
+        android:icon="@drawable/cal"
+        android:title="@string/KcalCalculator" />
+
     <item
         android:id="@+id/nav_BMI"
-        android:title="BMI cal" />
+        android:icon="@drawable/cal"
+        android:title="@string/BMICalculator" />
+
+
+    <item
+        android:id="@+id/nav_BMR"
+        android:icon="@drawable/cal"
+        android:title="@string/BMRCalculator" />
+
+    <item
+        android:id="@+id/nav_timer"
+        android:icon="@drawable/timer"
+        android:title="@string/Timer" />
+
+
     <item
         android:id="@+id/nav_setting"
-        android:title="Setting" />
-
-
-
-
-
-
-    <!-- Add more items as needed -->
-</menu>
+        android:icon="@drawable/setting"
+        android:title="@string/Setting" />

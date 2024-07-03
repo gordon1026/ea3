@@ -41,4 +41,11 @@
     <string name="SetAStepGoal">設定一個目標</string>
     <string name="SetGoals">設定目標</string>
     <string name="Save">保存</string>
+    <string name="Weather">天氣</string>
+    <string name="Game">遊戲</string>
+    <string name="KcalCalculator">卡路里計算器</string>
+    <string name="BMICalculator">體重指數計算器</string>
+    <string name="BMRCalculator">基礎代謝率計算器</string>
+    <string name="Timer">計時器</string>
+    <string name="Setting">設定</string>
 </resources>
