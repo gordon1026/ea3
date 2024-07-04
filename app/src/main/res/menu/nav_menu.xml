@@ -9,6 +9,10 @@
         android:icon="@drawable/weather"
         android:title="@string/Weather" />
     <item
+        android:id="@+id/nav_step"
+        android:icon="@drawable/step"
+        android:title="@string/Step" />
+    <item
         android:id="@+id/nav_Game"
         android:icon="@drawable/game"
         android:title="@string/Game" />

@@ -14,6 +14,7 @@ public class DBHelper extends SQLiteOpenHelper {
     private static final String COLUMN_ID = "id";
     private static final String COLUMN_USERNAME = "username";
     private static final String COLUMN_PASSWORD = "password";
+    private static final String COLUMN_IMAGE_PATH = "image_path";
 
     public DBHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -24,7 +25,8 @@ public class DBHelper extends SQLiteOpenHelper {
         String CREATE_TABLE = "CREATE TABLE " + TABLE_NAME + "("
                 + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
                 + COLUMN_USERNAME + " TEXT,"
-                + COLUMN_PASSWORD + " TEXT" + ")";
+                + COLUMN_PASSWORD + " TEXT,"
+                + COLUMN_IMAGE_PATH + " TEXT" + ")";
         db.execSQL(CREATE_TABLE);
     }
 
@@ -58,7 +60,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
     public Cursor getUser(String username) {
         SQLiteDatabase db = this.getReadableDatabase();
-        String[] columns = {COLUMN_ID, COLUMN_USERNAME};
+        String[] columns = {COLUMN_ID, COLUMN_USERNAME, COLUMN_IMAGE_PATH};
         String selection = COLUMN_USERNAME + "=?";
         String[] selectionArgs = {username};
         return db.query(TABLE_NAME, columns, selection, selectionArgs, null, null, null);
@@ -69,6 +71,16 @@ public class DBHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(COLUMN_PASSWORD, newPassword);
+        int rows = db.update(TABLE_NAME, values, COLUMN_USERNAME + "=?", new String[]{username});
+        db.close();
+        return rows > 0;
+    }
+
+    // 新增一个方法用于更新用户头像路径
+    public boolean updateImagePath(String username, String imagePath) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_IMAGE_PATH, imagePath);
         int rows = db.update(TABLE_NAME, values, COLUMN_USERNAME + "=?", new String[]{username});
         db.close();
         return rows > 0;

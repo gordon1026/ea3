@@ -18,8 +18,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.Locale;
-
 public class ShowWeather extends AppCompatActivity {
 
     private TextView tvPlace, tvTemperature, tvTime, tvTodayWeather, tvFutureWeather;
@@ -40,6 +38,7 @@ public class ShowWeather extends AppCompatActivity {
         tvPlace = (TextView) findViewById(R.id.tvPlace);
         tvTemperature = (TextView)findViewById(R.id.tvTemperature);
         ivWeatherIcon = (ImageView) findViewById(R.id.ivWeatherIcon);
+        tvTime = (TextView)findViewById(R.id.tvTime);
         tvTodayWeather = (TextView)findViewById(R.id.tvTodayWeather);
         tvFutureWeather = (TextView)findViewById(R.id.tvFutureWeather);
 
@@ -78,32 +77,14 @@ public class ShowWeather extends AppCompatActivity {
 
 
 
-
+        // 定義不同的remainUrls
         String[] remainUrls = {
                 "dataType=rhrread&lang=tc",
                 "dataType=flw&lang=tc",
                 "dataType=fnd&lang=tc"
         };
 
-        //String language = Locale.getDefault().getLanguage();
-
-       // String[] remainUrls;
-
-       // if ("zh-rHK".equals(language)) {
-       //     remainUrls = new String[]{
-       //             "dataType=rhrread&lang=tc",
-        //            "dataType=flw&lang=tc",
-       //             "dataType=fnd&lang=tc"
-        //    };
-       // } else {
-        //    remainUrls = new String[]{
-         //           "dataType=rhrread&lang=en",
-          //          "dataType=flw&lang=en",
-          //          "dataType=fnd&lang=en"
-        //   };
-     //  }
-
-
+        // 遍歷每個URL並執行一個新的AsyncTask
         for (String remainUrl : remainUrls) {
             String fullUrl = baseUrl + remainUrl;
             new MyAsyncTask(remainUrl).execute(fullUrl);

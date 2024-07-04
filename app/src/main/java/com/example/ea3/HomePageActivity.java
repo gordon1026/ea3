@@ -1,6 +1,10 @@
 package com.example.ea3;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
@@ -8,6 +12,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -24,10 +29,13 @@ public class HomePageActivity extends AppCompatActivity {
     private NavigationView navigationView;
     private ImageButton btnMenu, btnProfile;
     private ViewPager viewPager;
-    private ImageView img1, img2, img3, img4, img5, img6, img7, img8;
+    private ImageView img1, img2, img3, img4, img5, img6, img7, img8,profileImage;
     private Handler handler = new Handler();
     private Runnable runnable;
+    private TextView name;
     private int currentPage = 0;
+    private SharedPreferences sharedPreferences;
+    private String profileImagePath;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +56,20 @@ public class HomePageActivity extends AppCompatActivity {
         img6 = findViewById(R.id.img6);
         img7 = findViewById(R.id.img7);
         img8 = findViewById(R.id.img8);
+        View headerView = navigationView.getHeaderView(0);
+        profileImage = headerView.findViewById(R.id.profile_image);
+        name = headerView.findViewById(R.id.name);
+
+        sharedPreferences = getSharedPreferences("UserPref", Context.MODE_PRIVATE);
+        profileImagePath = sharedPreferences.getString("image_path", null);
+        String user = sharedPreferences.getString("username", "Default User");
+
+        name.setText(user);
+        // Load the image if the path exists
+        if (profileImagePath != null) {
+            Bitmap bitmap = BitmapFactory.decodeFile(profileImagePath);
+            profileImage.setImageBitmap(bitmap);
+        }
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
         // Set up ViewPager
@@ -88,12 +110,62 @@ public class HomePageActivity extends AppCompatActivity {
                 int itemId = item.getItemId();
                 if (itemId == R.id.nav_home) {
                     startActivity(new Intent(HomePageActivity.this, HomePageActivity.class));
-                } else if (itemId == R.id.kcal) {
+                } else if (itemId == R.id.nav_kcal) {
                     // Handle sign out action
                     // Clear the shared preferences
 
                     // Redirect to sign-in page
                     startActivity(new Intent(HomePageActivity.this, Kcal.class));
+                    finish();
+                }else if (itemId == R.id.nav_Weather) {
+                    // Handle sign out action
+                    // Clear the shared preferences
+
+                    // Redirect to sign-in page
+                    startActivity(new Intent(HomePageActivity.this, ShowWeather.class));
+                    finish();
+
+                }else if (itemId == R.id.nav_BMI) {
+                    // Handle sign out action
+                    // Clear the shared preferences
+
+                    // Redirect to sign-in page
+                    startActivity(new Intent(HomePageActivity.this, BMICalActivity.class));
+                    finish();
+                }else if (itemId == R.id.nav_BMR) {
+                    // Handle sign out action
+                    // Clear the shared preferences
+
+                    // Redirect to sign-in page
+                    startActivity(new Intent(HomePageActivity.this, BmrcalActivity.class));
+                    finish();
+                }else if (itemId == R.id.nav_Game) {
+                    // Handle sign out action
+                    // Clear the shared preferences
+
+                    // Redirect to sign-in page
+                    startActivity(new Intent(HomePageActivity.this,gameActivity.class));
+                    finish();
+                }else if (itemId == R.id.nav_timer) {
+                    // Handle sign out action
+                    // Clear the shared preferences
+
+                    // Redirect to sign-in page
+                    startActivity(new Intent(HomePageActivity.this,Countdown.class));
+                    finish();
+                }else if (itemId == R.id.nav_setting) {
+                    // Handle sign out action
+                    // Clear the shared preferences
+
+                    // Redirect to sign-in page
+                    startActivity(new Intent(HomePageActivity.this, SettingsActivity.class));
+                    finish();
+                }else if (itemId == R.id.nav_step) {
+                    // Handle sign out action
+                    // Clear the shared preferences
+
+                    // Redirect to sign-in page
+                    startActivity(new Intent(HomePageActivity.this, Step.class));
                     finish();
                 }
                 drawerLayout.closeDrawers();
@@ -106,13 +178,13 @@ public class HomePageActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 int itemId = item.getItemId();
                 if (itemId == R.id.action_map) {
-                    startActivity(new Intent(HomePageActivity.this, Countdown.class));
+                    startActivity(new Intent(HomePageActivity.this, Map.class));
                     return true;
                 } else if (itemId == R.id.action_home) {
                     // Handle home button click
                     return true;
                 } else if (itemId == R.id.action_take_photo) {
-                    startActivity(new Intent(HomePageActivity.this, ShowWeather.class));
+                    startActivity(new Intent(HomePageActivity.this, AI.class));
                     return true;
                 }
                 return false;

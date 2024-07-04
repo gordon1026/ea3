@@ -48,4 +48,5 @@
     <string name="BMRCalculator">基礎代謝率計算器</string>
     <string name="Timer">計時器</string>
     <string name="Setting">設定</string>
+    <string name="Step">步數</string>
 </resources>

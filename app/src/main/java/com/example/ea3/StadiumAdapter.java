@@ -1,6 +1,5 @@
 package com.example.ea3;
 
-
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
@@ -12,6 +11,8 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.bumptech.glide.Glide;
 
 import java.util.List;
 
@@ -56,7 +57,11 @@ public class StadiumAdapter extends RecyclerView.Adapter<StadiumAdapter.StadiumV
 
         public void bind(Stadium stadium) {
             nameTextView.setText(stadium.getName());
-            imageView.setImageResource(stadium.getImageResource());
+
+            // Use Glide to load the image
+            Glide.with(itemView.getContext())
+                    .load(stadium.getImageResource())
+                    .into(imageView);
 
             itemView.setOnClickListener(v -> {
                 Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(stadium.getMapUrl()));
