@@ -13,6 +13,7 @@ import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -46,6 +47,7 @@ public class Step extends AppCompatActivity implements SensorEventListener {
     private Button setGoalButton;
     private double newKcalRecord;
     private int userId;
+    private ImageView btnBackTo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +58,7 @@ public class Step extends AppCompatActivity implements SensorEventListener {
         stepGoalInput = findViewById(R.id.et_step_goal);
         setGoalButton = findViewById(R.id.btn_set_goal);
         sava = findViewById(R.id.btn_sava);
+        btnBackTo = findViewById(R.id.BackTo);
         SharedPreferences sharedPreferences = getSharedPreferences("UserPref", Context.MODE_PRIVATE);
         userId = sharedPreferences.getInt("userId", -1);
 
@@ -66,6 +69,13 @@ public class Step extends AppCompatActivity implements SensorEventListener {
 
         loadData();
         resetSteps();
+
+        btnBackTo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
 
         steps.setText(String.valueOf(0));

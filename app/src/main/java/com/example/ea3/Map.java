@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -20,6 +21,7 @@ public class Map extends AppCompatActivity {
     private RecyclerView recyclerView;
     private java.util.Map<String, List<Stadium>> districtStadiumMap;
     private java.util.Map<String, List<String>> regionMap;
+    private ImageView btnBackTo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +31,7 @@ public class Map extends AppCompatActivity {
         regionSpinner = findViewById(R.id.region_spinner);
         districtSpinner = findViewById(R.id.district_spinner);
         recyclerView = findViewById(R.id.recycler_view);
+        btnBackTo = findViewById(R.id.BackTo);
 
 
         regionMap = Mapdata.getRegionMap();
@@ -38,6 +41,13 @@ public class Map extends AppCompatActivity {
         ArrayAdapter<String> regionAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, new ArrayList<>(regionMap.keySet()));
         regionAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         regionSpinner.setAdapter(regionAdapter);
+
+        btnBackTo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
 
         regionSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {

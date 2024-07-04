@@ -3,8 +3,10 @@ package com.example.ea3;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -16,6 +18,7 @@ import androidx.appcompat.app.AppCompatActivity;
 public class BmrcalActivity extends AppCompatActivity {
     private Button btnSubmit, btnHome;
     private EditText editWeight, editHeight, editAge;
+    private ImageView btnBackTo;
     private TextView textViewBMR, textViewTDEE;
     private RadioGroup rgActivity, rgTarget, rgGender;
 
@@ -41,11 +44,19 @@ public class BmrcalActivity extends AppCompatActivity {
         textViewTDEE = findViewById(R.id.textViewTDEE);
         btnHome = findViewById(R.id.btnhome);
         btnSubmit = findViewById(R.id.btnsubmit);
+        btnBackTo = findViewById(R.id.BackTo);
 
         btnHome.setOnClickListener(v -> {
             Intent intent = new Intent(BmrcalActivity.this, HomePageActivity.class);
             startActivity(intent);
         });
+        btnBackTo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
 
         rgGender = findViewById(R.id.rgGender);
         rgGender.setOnCheckedChangeListener((group, checkedId) -> {

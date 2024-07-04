@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -34,6 +35,7 @@ public class BMICalActivity extends AppCompatActivity {
     private EditText etHeight, etWeight;
     private TextView bmiValue, bmiCategory;
     private Button enterButton;
+    private ImageView BackTo;
     private int userId;
     private float bmi;
     @Override
@@ -46,6 +48,7 @@ public class BMICalActivity extends AppCompatActivity {
         bmiValue = findViewById(R.id.additionalText);
         bmiCategory = findViewById(R.id.BMItextView);
         enterButton = findViewById(R.id.enterButton);
+        BackTo = findViewById(R.id.BackTo);
 
         enterButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,7 +56,16 @@ public class BMICalActivity extends AppCompatActivity {
                 calculateBMI();
             }
         });
-    }
+
+
+    BackTo.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            finish();
+        }
+    });
+}
+
 
     private void calculateBMI() {
         String heightStr = etHeight.getText().toString();

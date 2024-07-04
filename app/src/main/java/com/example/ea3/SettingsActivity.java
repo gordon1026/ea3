@@ -36,7 +36,7 @@ public class SettingsActivity extends AppCompatActivity {
     private static final int PICK_IMAGE = 1;
     private static final int REQUEST_READ_STORAGE = 2;
     private TextView username;
-    private ImageView profileImage;
+    private ImageView profileImage , btnBackTo;
     private SharedPreferences sharedPreferences;
     private String profileImagePath;
 
@@ -47,6 +47,7 @@ public class SettingsActivity extends AppCompatActivity {
 
         username = findViewById(R.id.username);
         profileImage = findViewById(R.id.profile_image);
+        btnBackTo = findViewById(R.id.BackTo);
         sharedPreferences = getSharedPreferences("UserPref", Context.MODE_PRIVATE);
 
         // Retrieve the username and profile image path from SharedPreferences
@@ -66,6 +67,12 @@ public class SettingsActivity extends AppCompatActivity {
             public void onClick(View v) {
                 // Check for storage permission
                 startActivity(new Intent(SettingsActivity.this, A.class));
+            }
+        });
+        btnBackTo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
             }
         });
 

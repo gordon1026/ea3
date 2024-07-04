@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.NumberPicker;
 import android.widget.TextView;
 
@@ -21,6 +22,9 @@ public class Countdown extends AppCompatActivity {
     private Handler handler = new Handler();
     private long startTime, elapsedTime;
     private MediaPlayer mediaPlayer;
+    private ImageView btnBackTo;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +38,7 @@ public class Countdown extends AppCompatActivity {
         startButton = findViewById(R.id.startButton);
         resetButton = findViewById(R.id.resetButton);
         toggleModeButton = findViewById(R.id.toggleModeButton);
+        btnBackTo = findViewById(R.id.BackTo);
 
         pickerHours.setMaxValue(23);
         pickerHours.setMinValue(0);
@@ -41,6 +46,14 @@ public class Countdown extends AppCompatActivity {
         pickerMinutes.setMinValue(0);
         pickerSeconds.setMaxValue(59);
         pickerSeconds.setMinValue(0);
+
+        btnBackTo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
 
         startButton.setOnClickListener(view -> {
             if (isTimerMode) {

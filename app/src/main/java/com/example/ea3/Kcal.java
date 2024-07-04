@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -32,6 +33,7 @@ public class Kcal extends AppCompatActivity {
 
     private EditText newKcalRecord;
     private Button btnKcal, btnShowKcalRecord;
+    private ImageView btnBackTo;
     private int userId;
 
     @Override
@@ -42,6 +44,7 @@ public class Kcal extends AppCompatActivity {
         newKcalRecord = findViewById(R.id.newKcalRecord);
         btnKcal = findViewById(R.id.btnKcal);
         btnShowKcalRecord = findViewById(R.id.btnShowKcalRecord);
+        btnBackTo = findViewById(R.id.BackTo);
 
         // Retrieve userId from SharedPreferences
         SharedPreferences sharedPreferences = getSharedPreferences("UserPref", Context.MODE_PRIVATE);
@@ -52,6 +55,13 @@ public class Kcal extends AppCompatActivity {
             finish();
             return;
         }
+        btnBackTo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
 
         btnKcal.setOnClickListener(new View.OnClickListener() {
             @Override

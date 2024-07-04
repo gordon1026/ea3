@@ -46,6 +46,7 @@ public class A extends AppCompatActivity {
         avatarImageView = findViewById(R.id.imageView);
         buttonChoose = findViewById(R.id.buttonChoose);
         buttonUpload = findViewById(R.id.buttonUpload);
+
         back = findViewById(R.id.back);
         dbHelper = new DBHelper(this);
         sharedPreferences = getSharedPreferences("UserPref", MODE_PRIVATE);

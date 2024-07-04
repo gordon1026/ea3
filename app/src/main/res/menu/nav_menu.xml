@@ -43,3 +43,4 @@
         android:id="@+id/nav_setting"
         android:icon="@drawable/setting"
         android:title="@string/Setting" />
+</menu>

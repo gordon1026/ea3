@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -27,6 +28,8 @@ public class ShowWeather extends AppCompatActivity {
     private TextView tvDay3Week, tvDay3Temperature, tvDay3RSRpercentage, tvDay3Weather;
     private TextView tvDay4Week, tvDay4Temperature, tvDay4RSRpercentage, tvDay4Weather;
     private ImageView ivWeatherIcon, ivDay0WeatherIcon,ivDay1WeatherIcon, ivDay2WeatherIcon, ivDay3WeatherIcon,ivDay4WeatherIcon;
+    private ImageView btnBackTo;
+
 
     private String baseUrl = "https://data.weather.gov.hk/weatherAPI/opendata/weather.php?";
 
@@ -38,7 +41,7 @@ public class ShowWeather extends AppCompatActivity {
         tvPlace = (TextView) findViewById(R.id.tvPlace);
         tvTemperature = (TextView)findViewById(R.id.tvTemperature);
         ivWeatherIcon = (ImageView) findViewById(R.id.ivWeatherIcon);
-        tvTime = (TextView)findViewById(R.id.tvTime);
+        btnBackTo = findViewById(R.id.BackTo);
         tvTodayWeather = (TextView)findViewById(R.id.tvTodayWeather);
         tvFutureWeather = (TextView)findViewById(R.id.tvFutureWeather);
 
@@ -89,7 +92,16 @@ public class ShowWeather extends AppCompatActivity {
             String fullUrl = baseUrl + remainUrl;
             new MyAsyncTask(remainUrl).execute(fullUrl);
         }
+
+        btnBackTo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
+
+
 
     public void method1(String result) throws JSONException {
         JSONObject weatherJson = new JSONObject(result);

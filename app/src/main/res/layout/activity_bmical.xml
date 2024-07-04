@@ -8,6 +8,22 @@
     android:background="#Edb974"
     tools:context=".BMICalActivity">
     <!--  Top TextView for displaying the number  -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:gravity="left|top">
+
+        <ImageView
+            android:id="@+id/BackTo"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="5dp"
+            android:onClick="BackTo"
+            android:src="@drawable/backTo" />
+
+    </LinearLayout>
+
     <TextView
         android:id="@+id/BMItextView"
         android:layout_width="0dp"
