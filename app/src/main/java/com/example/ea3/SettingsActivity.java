@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
@@ -28,6 +29,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Locale;
 
 public class SettingsActivity extends AppCompatActivity {
 
@@ -102,18 +104,43 @@ public class SettingsActivity extends AppCompatActivity {
 
 
     public void onLanguageClick(View view) {
-        // Handle language setting click
-        Toast.makeText(this, "Language Settings", Toast.LENGTH_SHORT).show();
+        SharedPreferences prefs = getSharedPreferences("app_settings", MODE_PRIVATE);
+        String currentLanguage = prefs.getString("language", "en");
+
+        // change language
+        String newLanguage;
+        if (currentLanguage.equals("zh-rHK")) {
+            newLanguage = "en";
+        } else {
+            newLanguage = "zh-rHK";
+        }
+        setLanguage(newLanguage);
+    }
+    private void setLanguage(String language) {
+
+        Locale locale = new Locale(language);
+        Locale.setDefault(locale);
+        Configuration config = new Configuration();
+        config.setLocale(locale);
+        getResources().updateConfiguration(config, getResources().getDisplayMetrics());
+
+
+        SharedPreferences.Editor editor = getSharedPreferences("app_settings", MODE_PRIVATE).edit();
+        editor.putString("language", language);
+        editor.apply();
+
+
+        recreate();
     }
 
     public void onAboutClick(View view) {
-        // Handle about click
-        Toast.makeText(this, "About", Toast.LENGTH_SHORT).show();
+
+        setContentView(R.layout.activity_settings_about);
     }
 
-    public void onContactClick(View view) {
+    public void onContactUsClick(View view) {
         // Handle contact us click
-        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://wa.me/1234567890")); // WhatsApp link
+        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://web.whatsapp.com/")); // WhatsApp link
         startActivity(intent);
     }
 

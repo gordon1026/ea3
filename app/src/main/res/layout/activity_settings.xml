@@ -54,7 +54,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:padding="16dp"
+            android:padding="10dp"
             android:background="#FFFFFF"
             android:clickable="true"
             android:onClick="onLanguageClick">
@@ -63,13 +63,16 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:layout_marginLeft="5dp"
                 android:text="@string/Language"
                 android:textSize="16sp" />
 
-            <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:src="@drawable/logo" /> <!-- Replace with your drawable -->
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/ChangeLanguage"
+                android:onClick="onLanguageClick"/>
+
         </LinearLayout>
 
         <View
@@ -97,7 +100,7 @@
             <ImageView
                 android:layout_width="24dp"
                 android:layout_height="24dp"
-                android:src="@drawable/logo" /> <!-- Replace with your drawable -->
+                android:src="@drawable/logo" />
         </LinearLayout>
 
         <View
@@ -122,10 +125,14 @@
                 android:text="@string/ContactUs"
                 android:textSize="16sp" />
 
-            <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:src="@drawable/logo" /> <!-- Replace with your drawable -->
+            <TextView
+                android:id="@+id/ContactUS"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Whatsapp: +85256129482"
+                android:textColor="#0000ff"
+                android:onClick="onContactUsClick"/>
+
         </LinearLayout>
 
         <View
